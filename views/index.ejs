@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>CampusDekho.ai</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CampusDekho.ai</h1>
+            <h1 id="mht_cet">MHT CET Engineering Counselling</h1>
+            <p class="subtitle">Book your slot for the counselling session</p>
+        </header>
+
+        <div class="alert" id="alert" style="display: none;">
+            <span class="close-btn" id="closeAlert">&times;</span>
+            <p id="alertMessage"></p>
+        </div>
+
+
+        <section class="registration-section" id="registrationSection">
+            <h2>Registration</h2>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number (10 digits)</label>
+                    <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
+                    <small class="hint">Enter 10 digit phone number without country code</small>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button type="submit" class="btn">Proceed to Slot Selection</button>
+            </form>
+        </section>
+
+        <section class="slot-section" id="slotSection">
+            <h2>Select Your Slot</h2>
+            <div class="days-container">
+                <div class="day-tab active" data-day="09-06-2025">June 9, 2025</div>
+                <div class="day-tab" data-day="10-06-2025">June 10, 2025</div>
+                <div class="day-tab" data-day="11-06-2025">June 11, 2025</div>
+            </div>
+            <div class="slots-container" id="slotsContainer">
+                <!-- Slots will be generated here by JavaScript -->
+            </div>
+            <button id="confirmBtn" class="btn" style="margin-top: 20px; display: none;">Confirm Booking</button>
+        </section>
+
+        <div class="confirmation" id="confirmation">
+            <div class="confirmation-icon">✓</div>
+            <h2>Booking Confirmed!</h2>
+            <div class="booking-details" id="bookingDetails">
+                <!-- Booking details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/index.js"></script>
+</body>
+</html>
+
