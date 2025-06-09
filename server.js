@@ -25,14 +25,16 @@ connectDB();
 
 const port = process.env.PORT;
 
-const userSchema = new mongoose.Schema({
+const newUserSchema = new mongoose.Schema({
     email : String,
     phoneNumber : Number,
     firstName : String,
     lastName : String,
-    isSlotBokked : Boolean
+    isSlotBokked : Boolean,
+    date : String,
+    slot : String
 });
-const User = mongoose.model('User', userSchema);
+const newUser = mongoose.model('newUser', newUserSchema);
 
 
 app.get('/', async(req,res)=>{
@@ -43,26 +45,30 @@ app.post('/send_data',async (req,res)=>{
     const userData = req.body;
     // console.log(userData);
 
+
+
     try {
-        const user = await User.findOne({ phoneNumber : userData.phone});
+        const user = await newUser.findOne({ phoneNumber : userData.phone});
         const data = {
             email : userData.email,
             phoneNumber : userData.phone,
             firstName : userData.firstName,
             lastName : userData.lastName,
-            isSlotBokked : false
+            isSlotBokked : false,
+            date : '',
+            slot : ''
         }
         if(user && user.isSlotBokked){
             return res.json({msg:'This phone number is already registered.',flag : false});
         }else if(user && user.isSlotBokked == false){
-            await User.findOneAndUpdate(
+            await newUser.findOneAndUpdate(
                 { phoneNumber: userData.phone },
                 data,
                 { new: true }
             );
         }else{
-            const newUser = new User(data);
-            await newUser.save();
+            const nUser = new newUser(data);
+            await nUser.save();
         }
         return res.json({msg:'suceefull registration.',flag : true});
         
@@ -78,11 +84,14 @@ app.post('/bookslot',async (req,res)=>{
     // console.log(slotdata);
 
     try {
-        const user = await User.findOne({ phoneNumber : slotdata.phone});
+        const user = await newUser.findOne({ phoneNumber : slotdata.phone});
         if(user){
-            await User.findOneAndUpdate(
+            await newUser.findOneAndUpdate(
                 { phoneNumber: slotdata.phone },
-                {isSlotBokked : true},
+                {   isSlotBokked : true,
+                    date : slotdata.date,
+                    slot : slotdata.slot
+                },
                 { new: true }
             );
 
