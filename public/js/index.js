@@ -12,31 +12,19 @@ document.addEventListener('DOMContentLoaded',async function() {
 
     
     const bookedSlots = {
-    '09-06-2025': {
-        '10:00': 0,
-        '11:00': 0,
-        '12:00': 0,
-        '1:00': 0,
-        '2:00': 0,
-        '3:00': 0,
-        '4:00': 0,
-        '5:00': 0,
-        '6:00': 0,
-        '7:00': 0
-    },
-    '10-06-2025': {
-        '10:00': 0,
-        '11:00': 0,
-        '12:00': 0,
-        '1:00': 0,
-        '2:00': 0,
-        '3:00': 0,
-        '4:00': 0,
-        '5:00': 0,
-        '6:00': 0,
-        '7:00': 0
-    },
     '11-06-2025': {
+        '10:00': 0,
+        '11:00': 0,
+        '12:00': 0,
+        '1:00': 0,
+        '2:00': 0,
+        '3:00': 0,
+        '4:00': 0,
+        '5:00': 0,
+        '6:00': 0,
+        '7:00': 0
+    },
+    '12-06-2025': {
         '10:00': 0,
         '11:00': 0,
         '12:00': 0,
@@ -79,7 +67,7 @@ document.addEventListener('DOMContentLoaded',async function() {
         timeSlots.push(time);
     });
     
-    let selectedDay = '09-06-2025';
+    let selectedDay = '11-06-2025';
     let selectedSlot = null;
     let userData = {};
     generateSlots(selectedDay);
@@ -211,7 +199,7 @@ document.addEventListener('DOMContentLoaded',async function() {
                     <p><strong>Name:</strong> ${userData.firstName} ${userData.lastName}</p>
                     <p><strong>Phone:</strong> ${userData.phone}</p>
                     <p><strong>Email:</strong> ${userData.email}</p>
-                    <p><strong>Date:</strong> ${formatDate(selectedDay)}</p>
+                    <p><strong>Date:</strong> ${selectedDay}</p>
                     <p><strong>Time:</strong> ${selectedSlot}</p>
                 `;
                 
